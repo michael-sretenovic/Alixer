@@ -32,6 +32,8 @@ project "Alixer"
 		incDirs
 	}
 	
+	disablewarnings "4251"
+	
 	filter "system:windows"
 		systemversion "latest"
 		defines

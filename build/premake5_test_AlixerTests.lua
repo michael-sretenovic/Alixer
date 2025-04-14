@@ -8,8 +8,8 @@ project "AlixerTests"
 	cppdialect (cppversion)
 	staticruntime "Off"
 
-	targetname (isVs and "$(ProjectName)" or "Alixer")
-	targetdir (outDir .. "%{prj.name}")	
+	targetname (isVs and "$(ProjectName)" or "AlixerTests")
+	targetdir (testOutDir .. "%{prj.name}")	
 	objdir ("!" .. intDir .. "%{prj.name}")
 
 	vpaths
@@ -31,6 +31,8 @@ project "AlixerTests"
 	}
 
 	links { "Alixer" }
+	
+	disablewarnings "4251"
 
 	filter "system:windows"
 		systemversion "latest"
@@ -40,8 +42,8 @@ project "AlixerTests"
 		}
 		postbuildcommands
 		{
-			("{COPY} ../" .. outDir .. "Alixer/*.dll ../" .. outDir .. "AlixerTests/"),
-			("{COPY} ../" .. outDir .. "Alixer/*.pdb ../" .. outDir .. "AlixerTests/")
+			("{COPY} " .. relCopyDir .. "Alixer/*.dll " .. testOutDir .. (isVs and "$(ProjectName)" or "AlixerTests/")),
+			("{COPY} " .. relCopyDir .. "Alixer/*.pdb " .. testOutDir .. (isVs and "$(ProjectName)" or "AlixerTests/"))
 		}
 
 	filter "configurations:Debug"

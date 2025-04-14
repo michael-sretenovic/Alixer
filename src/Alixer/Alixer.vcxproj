@@ -79,6 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_ASSERTS_ENABLED;AL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -98,6 +99,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_ASSERTS_ENABLED;AL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -123,6 +125,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -147,6 +150,8 @@
     <ClInclude Include="Alixer.h" />
     <ClInclude Include="AlixerApplication.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Exception\Exception.h" />
+    <ClInclude Include="Exception\InvalidOperationException.h" />
     <ClInclude Include="Render\AlixerWindow.h" />
     <ClInclude Include="Render\RenderEngine.h" />
     <ClInclude Include="Render\WindowConfig.h" />
@@ -154,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlixerApplication.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Exception\Exception.cpp" />
+    <ClCompile Include="Exception\InvalidOperationException.cpp" />
     <ClCompile Include="Render\AlixerWindow.cpp" />
     <ClCompile Include="Render\WindowConfig.cpp" />
     <ClCompile Include="pch.cpp">

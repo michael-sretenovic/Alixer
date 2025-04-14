@@ -55,21 +55,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
     <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
     <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
     <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
@@ -78,6 +78,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -92,14 +93,15 @@
       <ImportLibrary>$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)
-IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)</Command>
+      <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
+IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -120,14 +122,15 @@ IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.p
       <ImportLibrary>$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)
-IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)</Command>
+      <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
+IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -148,16 +151,21 @@ IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.p
       <ImportLibrary>$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)
-IF EXIST ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul) ELSE (xcopy /Q /Y /I ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb ..\$(SolutionDir)output\windows-$(Platform)-$(Configuration)\AlixerTests &gt; nul)</Command>
+      <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
+IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestAlixerWindow.h" />
+    <ClInclude Include="TestRenderEngine.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlixerTests.cpp" />
+    <ClCompile Include="AlixerApplicationTests.cpp" />
+    <ClCompile Include="AlixerWindowTests.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="TestAlixerWindow.cpp" />
+    <ClCompile Include="TestRenderEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Alixer\Alixer.vcxproj">

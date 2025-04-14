@@ -8,7 +8,29 @@ namespace Alixer
 	class ALIXER_API AlixerWindow
 	{
 	public:
-		explicit AlixerWindow(const WindowConfig config);
+		explicit AlixerWindow(const WindowConfig& config);
+
+		AlixerWindow(AlixerWindow& window) = default;
+
+		AlixerWindow(AlixerWindow&& window) = default;
+
+		virtual ~AlixerWindow() = default;
+
+		AlixerWindow& operator=(const AlixerWindow& window);
+
+		AlixerWindow& operator=(AlixerWindow&& window) noexcept;
+
+		virtual void Tick(uint32_t deltaMs) = 0;
+
+		virtual void Render() = 0;
+
+		uint32_t GetWidth() const;
+
+		uint32_t GetHeight() const;
+
+		uint8_t GetMaxFps() const;
+
+		char* GetTitle() const;
 
 	private:
 		WindowConfig _config;

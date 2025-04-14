@@ -4,14 +4,14 @@ cppversion = "C++latest"
 if _ACTION:match("vs.*") then
 	isVs = true
 	solutionDir = "$(SolutionDir)"
+	relCopyOutDir = ""
 	config = "windows-$(Platform)-$(Configuration)"
 else
 	isVs = false
 	solutionDir = "../"
+	relCopyOutDir = "../"
 	config = ("%{cfg.system}-" .. arch .. "-%{cfg.buildcfg}")
 end
-
-
 
 srcDirName = "src"
 libDirName = "lib"
@@ -24,7 +24,10 @@ testDir = solutionDir .. testDirName .."/"
 outDirBase = solutionDir .. outDirBaseName .. "/"
 
 outDir = outDirBase .. config .. "/"
+testOutDir = outDirBase .. "test/" .. config .. "/"
 intDir = outDirBase .. "obj/" .. config .. "/"
+
+relCopyDir = relCopyOutDir .. outDir
 
 relSolutionDir = "../"
 relSrcDir = relSolutionDir .. srcDirName .. "/"

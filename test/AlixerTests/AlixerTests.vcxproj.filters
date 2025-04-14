@@ -12,13 +12,24 @@
     <ClInclude Include="pch.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="TestAlixerWindow.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRenderEngine.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlixerTests.cpp">
+    <ClCompile Include="AlixerApplicationTests.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AlixerWindowTests.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="TestAlixerWindow.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRenderEngine.cpp" />
   </ItemGroup>
 </Project>
