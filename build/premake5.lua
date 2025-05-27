@@ -32,8 +32,16 @@ relCopyDir = relCopyOutDir .. outDir
 relSolutionDir = "../"
 relSrcDir = relSolutionDir .. srcDirName .. "/"
 relTestDir = relSolutionDir .. testDirName .. "/"
+relLibDir = relSolutionDir .. libDirName .. "/"
 
-incDirs = { srcDir, (srcDir .. "Alixer"), libDir }
+incDirs =
+{
+	srcDir,
+	(srcDir .. "Alixer"),
+	libDir,
+	(libDir .. "glm/glm"),
+	(libDir .. "spdlog/spdlog/include")
+}
 
 workspace "Alixer"
 	architecture "x64"
@@ -46,4 +54,9 @@ group ""
 
 group "test"
 	include "premake5_test_AlixerTests.lua"
+group ""
+
+group "lib"
+	include "premake5_lib_glm.lua"
+	include "premake5_lib_spdlog.lua"
 group ""

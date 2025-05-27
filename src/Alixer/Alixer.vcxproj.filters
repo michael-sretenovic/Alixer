@@ -1,48 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Headers">
-      <UniqueIdentifier>{C196CD9C-2D76-4C38-368E-D70EA2ECB299}</UniqueIdentifier>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources">
-      <UniqueIdentifier>{89565304-F535-D29F-FE4D-5D766AAC3801}</UniqueIdentifier>
+    <Filter Include="Events">
+      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exception">
+      <UniqueIdentifier>{54710DCF-C0DB-C145-091A-73EB75C39F9A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGl">
+      <UniqueIdentifier>{3E7D2C1D-AA08-9AE1-B319-1DD61F24F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{C5BB87CE-B15D-B2A4-9A18-C6F8865939F5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Alixer.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="Alixer.h" />
+    <ClInclude Include="AlixerApplication.h" />
+    <ClInclude Include="AlixerConfiguration.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Core\Input.h">
+      <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="AlixerApplication.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="Core\KeyCode.h">
+      <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="Core\KeyModifier.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Logger.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MouseButton.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\ApplicationRenderEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\EventType.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception\Exception.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception\InvalidOperationException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception\NullArgumentException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\AlixerOpenGl.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\OpenGl\OpenGlConfiguration.h">
+      <Filter>Platform\OpenGl</Filter>
     </ClInclude>
     <ClInclude Include="Render\AlixerWindow.h">
-      <Filter>Headers</Filter>
+      <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Render\RenderEngine.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="Render\NoneRenderEngine.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderEngineApi.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderEngineApi.h">
+      <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Render\WindowConfig.h">
-      <Filter>Headers</Filter>
+      <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Core\Layer.h">
+      <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Uuid.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderEngine.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\LayerList.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlixerApplication.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="AlixerApplication.cpp" />
+    <ClCompile Include="AlixerConfiguration.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core\Input.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\KeyCode.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\KeyModifier.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Logger.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\ApplicationRenderEvent.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\Event.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception\Exception.cpp">
+      <Filter>Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception\InvalidOperationException.cpp">
+      <Filter>Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception\NullArgumentException.cpp">
+      <Filter>Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\OpenGl\OpenGlConfiguration.cpp">
+      <Filter>Platform\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="Render\AlixerWindow.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\NoneRenderEngine.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\RenderEngineApi.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="Render\WindowConfig.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Core\MouseButton.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Layer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Uuid.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\LayerList.cpp" />
   </ItemGroup>
 </Project>

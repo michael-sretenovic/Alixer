@@ -1,19 +1,24 @@
-alixerDir = (srcDir .. "Alixer/")
-relAlixerDir = (relSrcDir .. "Alixer/")
+project ("Alixer")
 
-project "Alixer"
-	location (relAlixerDir)
-	kind "SharedLib"
-	language "C++"
-	cppdialect (cppversion)
-	staticruntime "Off"
-
-	targetname (isVs and "$(ProjectName)" or "Alixer")
-	targetdir (outDir .. "%{prj.name}")	
-	objdir ("!" .. intDir .. "%{prj.name}")
+	projName = (isVs and "$(ProjectName)" or "%{prj.name}")
+	projDir = (isVs and "$(ProjectDir)" or "../src/%{prj.name}/")
 	
-	pchheader "pch.h"
-	pchsource "../src/Alixer/pch.cpp"
+	alixerDir = (projDir)
+	relAlixerDir = (relSrcDir .. "%{prj.name}/")
+
+	location (relAlixerDir)
+	kind ("SharedLib")
+	language ("C++")
+	cppdialect (cppversion)
+	staticruntime ("Off")
+
+	targetname (projName)
+	targetdir (outDir .. projName)
+	objdir ("!" .. intDir .. projName)
+	implibname (outDir .. projName .. "/" .. projName)
+	
+	pchheader ("pch.h")
+	pchsource (relAlixerDir .. "pch.cpp")
 
 	vpaths
 	{
@@ -32,38 +37,43 @@ project "Alixer"
 		incDirs
 	}
 	
-	disablewarnings "4251"
+	links
+	{
+		
+	}
 	
-	filter "system:windows"
-		systemversion "latest"
+	disablewarnings ("4251")
+	
+	filter ("system:windows")
+		systemversion ("latest")
 		defines
 		{
 			"AL_BUILD_DLL",
 			"AL_PLATFORM_WINDOWS"
 		}
 
-	filter "configurations:Debug"
+	filter ("configurations:Debug")
 		defines
 		{
 			"AL_ASSERTS_ENABLED",
 			"AL_DEBUG"
 		}
-		optimize "Off"
-		runtime "Debug"
-		symbols "On"
+		optimize ("Off")
+		runtime ("Debug")
+		symbols ("On")
 
-	filter "configurations:Release"
+	filter ("configurations:Release")
 		defines
 		{
 			"AL_ASSERTS_ENABLED",
 			"AL_RELEASE"
 		}
-		optimize "On"
-		runtime "Release"
-		symbols "On"
+		optimize ("On")
+		runtime ("Release")
+		symbols ("On")
 
-	filter "configurations:Dist"
-		defines "AL_DIST"
-		optimize "On"
-		runtime "Release"
-		symbols "On"
+	filter ("configurations:Dist")
+		defines ("AL_DIST")
+		optimize ("On")
+		runtime ("Release")
+		symbols ("On")

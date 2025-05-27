@@ -6,16 +6,12 @@
 #include <thread>
 #include <vector>
 
+#include "AlixerConfiguration.h"
 #include "Core.h"
 #include "Render/AlixerWindow.h"
-#include "Render/RenderEngine.h"
 
 namespace Alixer
 {
-	typedef std::function<Shared<AlixerWindow> (const WindowConfig&)> CreateWindowFunction;
-
-	typedef std::function<Shared<RenderEngine>(const RenderEngineType)> CreateRenderEngineFunction;
-
 	class ALIXER_API AlixerApplication
 	{
 	public:

@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Headers">
-      <UniqueIdentifier>{C196CD9C-2D76-4C38-368E-D70EA2ECB299}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources">
-      <UniqueIdentifier>{89565304-F535-D29F-FE4D-5D766AAC3801}</UniqueIdentifier>
+    <Filter Include="TestFixtures">
+      <UniqueIdentifier>{9FB236EC-8B15-C690-349B-FE4620DD9113}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="TestFixtures\TestAlixerWindow.h">
+      <Filter>TestFixtures</Filter>
     </ClInclude>
-    <ClInclude Include="TestAlixerWindow.h">
-      <Filter>Sources</Filter>
+    <ClInclude Include="TestFixtures\TestConfiguration.h">
+      <Filter>TestFixtures</Filter>
     </ClInclude>
-    <ClInclude Include="TestRenderEngine.h" />
+    <ClInclude Include="TestFixtures\TestRenderEngine.h">
+      <Filter>TestFixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="TestFixtures\TestLayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlixerApplicationTests.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="AlixerApplicationTests.cpp" />
+    <ClCompile Include="AlixerWindowTests.cpp" />
+    <ClCompile Include="TestFixtures\TestAlixerWindow.cpp">
+      <Filter>TestFixtures</Filter>
     </ClCompile>
-    <ClCompile Include="AlixerWindowTests.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="TestFixtures\TestConfiguration.cpp">
+      <Filter>TestFixtures</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Sources</Filter>
+    <ClCompile Include="TestFixtures\TestRenderEngine.cpp">
+      <Filter>TestFixtures</Filter>
     </ClCompile>
-    <ClCompile Include="TestAlixerWindow.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="TestRenderEngine.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="LayerTests.cpp" />
+    <ClCompile Include="UuidTests.cpp" />
+    <ClCompile Include="TestFixtures\TestLayer.cpp" />
   </ItemGroup>
 </Project>

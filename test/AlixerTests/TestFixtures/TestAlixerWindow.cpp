@@ -4,7 +4,8 @@
 namespace AlixerTests
 {
 	TestAlixerWindow::TestAlixerWindow(const WindowConfig& config)
-		: AlixerWindow(config), _totalTicks(0), _totalRenders(0) { }
+		: AlixerWindow(config), _totalTicks(0), _totalRenders(0) {
+	}
 
 	void TestAlixerWindow::Tick(uint32_t deltaMs) { ++_totalTicks; }
 
@@ -13,6 +14,12 @@ namespace AlixerTests
 	uint32_t TestAlixerWindow::GetTotalTicks() const { return _totalTicks; }
 
 	uint32_t TestAlixerWindow::GetTotalRenderCount() const { return _totalRenders; }
+
+	std::any TestAlixerWindow::GetNativeWindow() { return std::any(); }
+
+	void TestAlixerWindow::SetVSync(const bool enabled) { _isVSyncEnabled = enabled; }
+
+	bool TestAlixerWindow::IsVSync() const { return _isVSyncEnabled; }
 
 	CreateWindowFunction TestAlixerWindow::CreateWindow = [](const WindowConfig& config)
 		-> Shared<AlixerWindow>

@@ -55,22 +55,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\Alixer\</IntDir>
+    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\Alixer\</IntDir>
+    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\Alixer\</IntDir>
+    <OutDir>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
@@ -81,17 +81,18 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_ASSERTS_ENABLED;AL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -101,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_ASSERTS_ENABLED;AL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -117,7 +118,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -127,7 +128,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_BUILD_DLL;AL_PLATFORM_WINDOWS;AL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -143,26 +144,58 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Alixer.h" />
     <ClInclude Include="AlixerApplication.h" />
+    <ClInclude Include="AlixerConfiguration.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Core\Input.h" />
+    <ClInclude Include="Core\KeyCode.h" />
+    <ClInclude Include="Core\KeyModifier.h" />
+    <ClInclude Include="Core\Layer.h" />
+    <ClInclude Include="Core\LayerList.h" />
+    <ClInclude Include="Core\Logger.h" />
+    <ClInclude Include="Core\MouseButton.h" />
+    <ClInclude Include="Core\Uuid.h" />
+    <ClInclude Include="Events\ApplicationRenderEvent.h" />
+    <ClInclude Include="Events\Event.h" />
+    <ClInclude Include="Events\EventType.h" />
     <ClInclude Include="Exception\Exception.h" />
     <ClInclude Include="Exception\InvalidOperationException.h" />
+    <ClInclude Include="Exception\NullArgumentException.h" />
+    <ClInclude Include="Platform\AlixerOpenGl.h" />
+    <ClInclude Include="Platform\OpenGl\OpenGlConfiguration.h" />
     <ClInclude Include="Render\AlixerWindow.h" />
+    <ClInclude Include="Render\NoneRenderEngine.h" />
     <ClInclude Include="Render\RenderEngine.h" />
+    <ClInclude Include="Render\RenderEngineApi.h" />
     <ClInclude Include="Render\WindowConfig.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlixerApplication.cpp" />
+    <ClCompile Include="AlixerConfiguration.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core\Input.cpp" />
+    <ClCompile Include="Core\KeyCode.cpp" />
+    <ClCompile Include="Core\KeyModifier.cpp" />
+    <ClCompile Include="Core\Layer.cpp" />
+    <ClCompile Include="Core\LayerList.cpp" />
+    <ClCompile Include="Core\Logger.cpp" />
+    <ClCompile Include="Core\MouseButton.cpp" />
+    <ClCompile Include="Core\Uuid.cpp" />
+    <ClCompile Include="Events\ApplicationRenderEvent.cpp" />
+    <ClCompile Include="Events\Event.cpp" />
     <ClCompile Include="Exception\Exception.cpp" />
     <ClCompile Include="Exception\InvalidOperationException.cpp" />
+    <ClCompile Include="Exception\NullArgumentException.cpp" />
+    <ClCompile Include="Platform\OpenGl\OpenGlConfiguration.cpp" />
     <ClCompile Include="Render\AlixerWindow.cpp" />
+    <ClCompile Include="Render\NoneRenderEngine.cpp" />
+    <ClCompile Include="Render\RenderEngineApi.cpp" />
     <ClCompile Include="Render\WindowConfig.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

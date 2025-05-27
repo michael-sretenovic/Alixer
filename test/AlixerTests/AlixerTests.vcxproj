@@ -55,22 +55,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\AlixerTests\</OutDir>
-    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\AlixerTests\</IntDir>
+    <OutDir>$(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)output\obj\windows-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
@@ -80,17 +80,21 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;$(ProjectDir);$(ProjectDir)TestFixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
@@ -103,7 +107,7 @@ IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;$(ProjectDir);$(ProjectDir)TestFixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -113,13 +117,17 @@ IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
@@ -132,7 +140,7 @@ IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>AL_PLATFORM_WINDOWS;AL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)test\AlixerTests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\Alixer;$(SolutionDir)lib;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\spdlog\spdlog\include;$(ProjectDir);$(ProjectDir)TestFixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -142,13 +150,17 @@ IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)output\windows-$(Platform)-$(Configuration)\$(ProjectName)\$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.dll $(SolutionDir)output\test\windows-$(Platform)-$(Configuration)\$(ProjectName) &gt; nul)
@@ -156,16 +168,22 @@ IF EXIST $(SolutionDir)output\windows-$(Platform)-$(Configuration)\Alixer\*.pdb\
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="TestFixtures\TestAlixerWindow.h" />
+    <ClInclude Include="TestFixtures\TestConfiguration.h" />
+    <ClInclude Include="TestFixtures\TestLayer.h" />
+    <ClInclude Include="TestFixtures\TestRenderEngine.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="TestAlixerWindow.h" />
-    <ClInclude Include="TestRenderEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlixerApplicationTests.cpp" />
     <ClCompile Include="AlixerWindowTests.cpp" />
+    <ClCompile Include="LayerTests.cpp" />
+    <ClCompile Include="TestFixtures\TestAlixerWindow.cpp" />
+    <ClCompile Include="TestFixtures\TestConfiguration.cpp" />
+    <ClCompile Include="TestFixtures\TestLayer.cpp" />
+    <ClCompile Include="TestFixtures\TestRenderEngine.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="TestAlixerWindow.cpp" />
-    <ClCompile Include="TestRenderEngine.cpp" />
+    <ClCompile Include="UuidTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Alixer\Alixer.vcxproj">

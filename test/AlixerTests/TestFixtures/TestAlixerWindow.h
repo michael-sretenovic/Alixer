@@ -22,11 +22,19 @@ namespace AlixerTests
 
 		uint32_t GetTotalRenderCount() const;
 
+		std::any GetNativeWindow() override;
+
+		void SetVSync(bool enabled) override;
+
+		bool IsVSync() const override;
+
 		static CreateWindowFunction CreateWindow;
 
 	private:
 		uint32_t _totalTicks;
 
 		uint32_t _totalRenders;
+
+		bool _isVSyncEnabled = false;
 	};
 }
