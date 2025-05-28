@@ -52,12 +52,28 @@ namespace Alixer
 
 		bool TryRemoveAt(size_t index, Shared<Layer>& layer);
 
+		std::vector<Shared<Layer>>::iterator Begin();
+
+		std::vector<Shared<Layer>>::iterator End();
+
+		std::vector<Shared<Layer>>::reverse_iterator RBegin();
+
+		std::vector<Shared<Layer>>::reverse_iterator REnd();
+
+		std::vector<Shared<Layer>>::const_iterator Begin() const;
+
+		std::vector<Shared<Layer>>::const_iterator End() const;
+
+		std::vector<Shared<Layer>>::const_reverse_iterator RBegin() const;
+
+		std::vector<Shared<Layer>>::const_reverse_iterator REnd() const;
+
 	private:
 		static constexpr size_t INITIAL_LAYER_COUNT = 16;
 
 		void Copy(const LayerList& layerList);
 
-		void Remove(const std::vector<std::shared_ptr<Layer>>::iterator& it);
+		void Remove(const std::vector<Shared<Layer>>::iterator& it);
 
 		std::vector<Shared<Layer>> _layers;
 	};

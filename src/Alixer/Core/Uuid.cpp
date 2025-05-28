@@ -6,7 +6,7 @@
 
 namespace Alixer
 {
-	Uuid::Uuid() : _uuid(s_distribution(s_generator)) { }
+	Uuid::Uuid() : _uuid(GenerateNumber()) { }
 
 	Uuid::Uuid(const uint64_t uuid) : _uuid(uuid) {}
 
@@ -28,7 +28,7 @@ namespace Alixer
 
 	size_t Uuid::Hash() const noexcept { return std::hash<uint64_t>()(_uuid); }
 
-	Uuid Uuid::Generate() { return Uuid(s_distribution(s_generator)); }
+	Uuid Uuid::Generate() { return Uuid(GenerateNumber()); }
 
 	const Uuid& Uuid::Empty()
 	{
@@ -36,9 +36,12 @@ namespace Alixer
 		return empty;
 	}
 
-	std::random_device Uuid::s_randomDevice;
+	uint64_t Uuid::GenerateNumber()
+	{
+		static std::random_device randomDevice;
+		static std::mt19937_64 generator(randomDevice());
+		static std::uniform_int_distribution<uint64_t> distribution(0, UINT64_MAX);
 
-	std::mt19937_64 Uuid::s_generator(s_randomDevice());
-
-	std::uniform_int_distribution<uint64_t> Uuid::s_distribution(0, UINT64_MAX);
+		return distribution(generator);
+	}
 }

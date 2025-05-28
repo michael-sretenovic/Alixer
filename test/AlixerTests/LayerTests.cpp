@@ -69,6 +69,10 @@ namespace AlixerTests
 		{
 			const Layer emptyLayer(Layer::Empty());
 			Assert::IsTrue(emptyLayer.IsEmpty(), L"Empty layer should be recognized as empty");
+
+			Assert::IsTrue(emptyLayer.GetId() == Uuid::Empty(), L"Empty layer ID should be equal to Uuid::Empty()");
+			Assert::AreEqual(Layer::Empty().GetName(), emptyLayer.GetName(), L"Empty layer name should match Layer::Empty() name");
+
 			const Layer nonEmptyLayer("Non-Empty Layer");
 			Assert::IsFalse(nonEmptyLayer.IsEmpty(), L"Non-empty layer should not be recognized as empty");
 		}

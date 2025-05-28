@@ -1,7 +1,11 @@
 ﻿#pragma once
 
 #include "Core.h"
-#include "spdlog/spdlog.h"
+
+#pragma warning(push)
+#pragma warning(disable: 6294 26495 26498 26800)
+#include "spdlog/spdlog.h" // NOLINT(modernize-macro-to-enum)
+#pragma warning(pop)
 
 namespace Alixer
 {

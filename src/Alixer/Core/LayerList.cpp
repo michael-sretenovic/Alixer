@@ -4,7 +4,6 @@
 
 #include "LayerList.h"
 #include "Logger.h"
-#include "Uuid.h"
 
 namespace Alixer
 {
@@ -284,12 +283,28 @@ namespace Alixer
 		return true;
 	}
 
+	std::vector<Shared<Layer>>::iterator LayerList::Begin() { return _layers.begin(); }
+
+	std::vector<Shared<Layer>>::iterator LayerList::End() { return _layers.end(); }
+
+	std::vector<Shared<Layer>>::reverse_iterator LayerList::RBegin() { return _layers.rbegin(); }
+
+	std::vector<Shared<Layer>>::reverse_iterator LayerList::REnd() { return _layers.rend(); }
+
+	std::vector<Shared<Layer>>::const_iterator LayerList::Begin() const { return _layers.begin(); }
+
+	std::vector<Shared<Layer>>::const_iterator LayerList::End() const { return _layers.end(); }
+
+	std::vector<Shared<Layer>>::const_reverse_iterator LayerList::RBegin() const { return _layers.rbegin(); }
+
+	std::vector<Shared<Layer>>::const_reverse_iterator LayerList::REnd() const { return _layers.rend(); }
+
 	void LayerList::Copy(const LayerList& layerList)
 	{
 		_layers.reserve(layerList._layers.size());
 		for (const Shared<Layer>& layer : layerList._layers)
 		{
-			_layers.emplace_back(layer);
+			_layers.push_back(layer);
 		}
 	}
 

@@ -39,22 +39,18 @@ namespace Alixer
 		static const Uuid& Empty();
 
 	private:
+		static uint64_t GenerateNumber();
+
 		friend struct std::hash<Uuid>;
 
 		uint64_t _uuid;
-
-		static std::random_device s_randomDevice;
-
-		static std::mt19937_64 s_generator;
-
-		static std::uniform_int_distribution<uint64_t> s_distribution;
 	};
 }
 
 template <>
 struct std::hash<Alixer::Uuid> {
 	size_t operator()(const Alixer::Uuid& uuid) const noexcept {
-		return uuid.Hash();
+		return uuid;
 	}
 };
 

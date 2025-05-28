@@ -59,7 +59,7 @@ namespace AlixerTests
 		{
 			constexpr uint64_t value = 123456789;
 			const Uuid originalUuid(value);
-			const Uuid movedUuid(std::move(originalUuid));  // NOLINT(performance-move-const-arg)
+			const Uuid movedUuid(originalUuid);  // NOLINT(performance-move-const-arg, performance-unnecessary-copy-initialization)
 			Assert::IsTrue(movedUuid == value, L"Moved UUID should match the original UUID");
 		}
 
